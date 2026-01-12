@@ -4,6 +4,8 @@ Trying out Haskell.
 
 ![Ackchyually](ackchyally.png)
 
+"you do computations in Haskell by declaring what something is instead of declaring how you get it"
+
 ## Install 
 
 We use [`GHCup`](https://www.haskell.org/ghcup/) to install the compiler.
@@ -59,3 +61,7 @@ Eqauivalent to trait bound in Rust
 - `Floating`: Float and Double 
 
 We can use `fromIntegral` function to convert a Integral type to a Num type ( e.g. fromIntegral (length [1,2,3,4]) + 3.2)
+
+# Pattern matching
+
+![alt text](pattern_matching.png)
