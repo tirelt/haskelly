@@ -62,6 +62,10 @@ Eqauivalent to trait bound in Rust
 
 We can use `fromIntegral` function to convert a Integral type to a Num type ( e.g. fromIntegral (length [1,2,3,4]) + 3.2)
 
-# Pattern matching
+## Pattern matching
 
 ![alt text](pattern_matching.png)
+
+## Curried function 
+
+The functions take one arguments. When a function take several arguments, it actually is applies and returns a function which is then applied to the rest of the params and so on so forth.

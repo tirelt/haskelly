@@ -2,7 +2,6 @@ split [] = ([],[])
 split [x] = ([x],[])
 split (a:b:xs) = let (l,q) = split xs in (a:l,b:q)
 
-merge [] [] = []
 merge xa [] = xa
 merge [] xb = xb
 merge xa@(a:qa) xb@(b:qb) 
