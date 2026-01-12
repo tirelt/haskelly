@@ -1,0 +1,1 @@
+resBoolOp x = (x `mod` 3 ==0 || x /= 3) && not (x `mod` 9 < 7)
