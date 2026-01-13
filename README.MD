@@ -77,3 +77,11 @@ The functions take one arguments. When a function take several arguments, it act
 [Haskell Hierachical Libraries](https://downloads.haskell.org/ghc/latest/docs/libraries/)
 
 Use [Hoggle](https://hoogle.haskell.org/) to search the Haskell libraries.
+
+## Compiling 
+
+```Bash
+ghc --make [file_name]
+runhaskell [file_name] # to run on the fly
+```
+An I/O action will be performed when we give it a name of main and then run our program
