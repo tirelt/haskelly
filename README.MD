@@ -33,6 +33,7 @@ ghci # open interactive window
 :q # quit
 :r # reload module
 :t # get the type of an expression 
+:m + [module_name] # e.g. Data.List, can give several separated by space
 ```
 
 ## Types
@@ -69,3 +70,9 @@ We can use `fromIntegral` function to convert a Integral type to a Num type ( e.
 ## Curried function 
 
 The functions take one arguments. When a function take several arguments, it actually is applies and returns a function which is then applied to the rest of the params and so on so forth.
+
+## Standard Library 
+
+[Haskell Hierachical Libraries](https://downloads.haskell.org/ghc/latest/docs/libraries/)
+
+Use [Hoggle](https://hoogle.haskell.org/) to search the Haskell libraries.
