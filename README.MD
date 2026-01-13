@@ -1,10 +1,9 @@
 # Haskell
 
-Trying out Haskell.
+"you do computations in Haskell by declaring what something is instead of declaring how you get it"
 
 ![Ackchyually](ackchyally.png)
 
-"you do computations in Haskell by declaring what something is instead of declaring how you get it"
 
 ## Install 
 
@@ -34,6 +33,8 @@ ghci # open interactive window
 :r # reload module
 :t # get the type of an expression 
 :m + [module_name] # e.g. Data.List, can give several separated by space
+:info [typecclass] # :info Num will show which functions the typeclass defines and it will give you a list of the types in the typeclass. :info Maybe, it will show you all the typeclasses that Maybe is an instance of. :info can show you the type declaration of a function
+:k # inspect the kind of a type. a '*' is a concrete type. '*->*' means a constructor that take a concrete type and returns a conrete type (e.g Maybe give Maybe Int) 
 ```
 
 ## Types
@@ -44,7 +45,7 @@ ghci # open interactive window
 - `Double`: double precision
 - `Bool`
 - `Char`
-- `String`
+- `String` which is equal to `[Char]`
 - `a`: generic type
 
 ## Typeclass
