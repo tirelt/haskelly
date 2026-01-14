@@ -1,4 +1,4 @@
-main = interact shortLinesOnly -- no do needed ? equivalent to getContents and run a String->String function on it  
+main = interact shortLinesOnly -- no do needed ? -> yes just one line in main, equivalent to getContents and run a String->String function on it  
   
 shortLinesOnly input = 
     let allLines = lines input  
