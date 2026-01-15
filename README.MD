@@ -85,3 +85,8 @@ ghc --make [file_name]
 runhaskell [file_name] # to run on the fly
 ```
 An I/O action will be performed when we give it a name of main and then run our program
+
+## Concepts
+- functor: `fmap :: (Functor f) => (a -> b) -> f a -> f b` 
+- applicative functor: `(<*>) :: (Applicative f) => f (a -> b) -> f a -> f b `
+- monad:  `(>>=) :: (Monad m) => m a -> (a -> m b) -> m b`
