@@ -17,3 +17,6 @@ instance Functor' Tree where
 
 maybeInstance = Just "Something serious."
 maybeExample = fmap' (++ " HEY GUYS IM INSIDE THE JUST") maybeInstance
+
+instance Functor ((->) r) where  
+    fmap f g = (\x -> f (g x))
