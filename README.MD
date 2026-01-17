@@ -90,3 +90,22 @@ An I/O action will be performed when we give it a name of main and then run our 
 - functor: `fmap :: (Functor f) => (a -> b) -> f a -> f b` 
 - applicative functor: `(<*>) :: (Applicative f) => f (a -> b) -> f a -> f b `
 - monad:  `(>>=) :: (Monad m) => m a -> (a -> m b) -> m b`
+
+## Profiling
+
+c.f [GHC doc](https://downloads.haskell.org/~ghc/7.2.1/docs/html/users_guide/profiling.html)
+
+
+```bash
+ghc -prof -auto-all -o Main Main.hs # compile, auto-all is for the cost center
+./Main +RTS -p # to run
+```
+## Project manager 
+
+### Cabal 
+
+```Bash
+cabal init [name] --non-interactive # create new project [name] 
+cabal build --enable-profiling
+cabal run -- +RTS -p
+```
