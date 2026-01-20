@@ -89,8 +89,14 @@ An I/O action will be performed when we give it a name of main and then run our 
 
 ## Concepts
 - functor: `fmap :: (Functor f) => (a -> b) -> f a -> f b` 
-- applicative functor: `(<*>) :: (Applicative f) => f (a -> b) -> f a -> f b `
-- monad:  `(>>=) :: (Monad m) => m a -> (a -> m b) -> m b`
+- applicative functor: 
+    - `pure :: a -> f a`
+    - `(<*>) :: (Applicative f) => f (a -> b) -> f a -> f b ` 
+- monad:
+    - `return = pure` 
+    - `(>>=) :: (Monad m) => m a -> (a -> m b) -> m b`
+    - `(>>) :: m a -> m b -> m b` implemented by default by `m a >> m b = \_ -> m b` 
+    - `fail :: String -> m a`
 
 ## Profiling
 
