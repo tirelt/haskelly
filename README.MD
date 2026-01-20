@@ -24,6 +24,7 @@ export PATH="$HOME/.ghcup/bin:$PATH"
 ## Doc 
 
 - [Lean you a Haskell](https://learnyouahaskell.github.io/introduction.html#so-whats-haskell)
+- [Real World Haskell](https://book.realworldhaskell.org/)
 
 ## Intercative 
 ```bash
@@ -93,7 +94,8 @@ An I/O action will be performed when we give it a name of main and then run our 
 
 ## Profiling
 
-c.f [GHC doc](https://downloads.haskell.org/~ghc/7.2.1/docs/html/users_guide/profiling.html)
+- [GHC doc](https://downloads.haskell.org/~ghc/7.2.1/docs/html/users_guide/profiling.html)
+- [Real World Haskell](https://book.realworldhaskell.org/read/profiling-and-optimization.html)
 
 
 ```bash
@@ -108,4 +110,26 @@ ghc -prof -auto-all -o Main Main.hs # compile, auto-all is for the cost center
 cabal init [name] --non-interactive # create new project [name] 
 cabal build --enable-profiling
 cabal run -- +RTS -p
+```
+
+## Multithreading 
+
+## Doc 
+- [HaskellWiki](https://wiki.haskell.org/Haskell_for_multicores#Lock-free_synchronisation)
+- [Real World Haskell](https://book.realworldhaskell.org/read/concurrent-and-multicore-programming.html)
+
+## Mutex
+```Haskell
+newMVar :: a -> IO (MVar a) 
+newEmptyMVar :: IO (MVar a)
+takeMVar :: MVar a -> IO a -- will block until the MVar is non-empty
+putMVar :: MVar a -> a -> IO () -- will block until the current MVar is empty
+isEmptyMVar :: MVar a -> IO Bool
+```
+
+## Channel
+```Haskell
+newChan :: IO (Chan a)
+writeChan :: Chan a -> a -> IO ()
+readChan :: Chan a -> IO a
 ```
