@@ -20,6 +20,7 @@ Add `.ghcup` bin to `PATH`
 ```bash
 export PATH="$HOME/.ghcup/bin:$PATH"
 ```
+(to avoid readding every time add to .bashrc or .bash_profile)
 
 ## Doc 
 
@@ -120,11 +121,11 @@ cabal run -- +RTS -p
 
 ## Multithreading 
 
-## Doc 
+### Doc 
 - [HaskellWiki](https://wiki.haskell.org/Haskell_for_multicores#Lock-free_synchronisation)
 - [Real World Haskell](https://book.realworldhaskell.org/read/concurrent-and-multicore-programming.html)
 
-## Mutex
+### Mutex
 ```Haskell
 newMVar :: a -> IO (MVar a) 
 newEmptyMVar :: IO (MVar a)
@@ -133,9 +134,27 @@ putMVar :: MVar a -> a -> IO () -- will block until the current MVar is empty
 isEmptyMVar :: MVar a -> IO Bool
 ```
 
-## Channel
+### Channel
 ```Haskell
 newChan :: IO (Chan a)
 writeChan :: Chan a -> a -> IO ()
 readChan :: Chan a -> IO a
 ```
+
+## Debugger 
+
+```Bash
+cabal install haskell-debugger --allow-newer=base,time,containers,ghc,ghc-bignum,template-haskell --enable-executable-dynamic # install
+```
+Add `.local/bin` bin to `PATH`
+```bash
+export PATH="$HOME/.local/bin:$PATH"
+```
+Check `hdb` 
+```Bash
+hdb --version
+```
+Configure [lauch.json](.vscode/launch.json)
+
+The lazy evaluation makes it tricky to follow the execuation. 
+We can use the `!` syntax to force eager evaluation.
