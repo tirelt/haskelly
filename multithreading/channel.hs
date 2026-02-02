@@ -8,7 +8,7 @@ main = do
     outputChan <- newChan
     forM_ [1..numWorkers] $ \i -> do 
         putStrLn $ "Start worker " ++ show i
-        forkIO $ process inputChan outputChan i
+        forkIO process inputChan outputChan i
         putStrLn $ "End worker " ++ show i
     putStrLn "All job sent"
     replicateM_ numWorkers (readChan outputChan >>= print) -- will have the same effect as join as readChan will block until it gets numWorkers res

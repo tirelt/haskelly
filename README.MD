@@ -37,6 +37,10 @@ ghci # open interactive window
 :m + [module_name] # e.g. Data.List, can give several separated by space
 :info [typecclass] # :info Num will show which functions the typeclass defines and it will give you a list of the types in the typeclass. :info Maybe, it will show you all the typeclasses that Maybe is an instance of. :info can show you the type declaration of a function
 :k # inspect the kind of a type. a '*' is a concrete type. '*->*' means a constructor that take a concrete type and returns a conrete type (e.g Maybe give Maybe Int) 
+:i # to get ingo. On a TypeClass to see the implementions. On a type to see its typeclasses
+:doc # to get the doc of a Typeclass
+:set -XOverloadedStrings # to enable a language feature
+:set -XNoOverloadedStrings # to discable
 ```
 
 ## Types
@@ -158,3 +162,10 @@ Configure [lauch.json](.vscode/launch.json)
 
 The lazy evaluation makes it tricky to follow the execuation. 
 We can use the `!` syntax to force eager evaluation.
+
+## Language extension 
+
+- {-# LANGUAGE OverloadedStrings #-}: String literals as values of type Text
+- {-# LANGUAGE LambdaCase #-}: allow lambda of the form \case { pattern1 -> expression1; pattern2 -> expression2; ... }
+- {-# LANGUAGE BangPatterns #-}:  force eager evaluation
+- {-# LANGUAGE RecordWildCards #-}: we can use {..} to pattern match and constructing records
