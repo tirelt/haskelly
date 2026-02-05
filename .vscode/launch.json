@@ -12,7 +12,7 @@
             "entryFile": "${workspaceFolder}/debug/main.hs",
             "entryPoint": "main",
             "entryArgs": [],
-            "extraGhcArgs": []
+            "extraGhcArgs": [],
         }
     ]
 }

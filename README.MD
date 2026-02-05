@@ -113,6 +113,12 @@ An I/O action will be performed when we give it a name of main and then run our 
 ghc -prof -auto-all -o Main Main.hs # compile, auto-all is for the cost center
 ./Main +RTS -p # to run
 ```
+
+## Ecosystem 
+
+- [Hackage](https://hackage.haskell.org/): all the packages
+- [Stackage](https://www.stackage.org/): a set (~30% of Hackage) compatible packages
+
 ## Project manager 
 
 ### Cabal 
@@ -121,13 +127,43 @@ ghc -prof -auto-all -o Main Main.hs # compile, auto-all is for the cost center
 cabal init [name] --non-interactive # create new project [name] 
 cabal build --enable-profiling
 cabal run -- +RTS -p
-```
+cabal test [name_test]
+cabal clean
+cabal configure # saves build config for subsquent cabal build
+cabal list 
+cabal update # update the package index, local representation of Hackage
+cabal outdated # to check if some of the dependencies were updated according to the local package index
 
+```
+`.cabal` contains
+- build-depends: list of packages required to build the corresponding
+package
+- other-modules: all the modules required to build this compo-
+nent (except, exposed-modules and main-is)
+- default-extensions: list of compiler extensions that will be automati-
+cally enabled when compiling every module in this package
+- default-language: Haskell2010
+
+## Linter 
+Already packackaged with HLS it seems
+```Bash
+cabal install hlint
+```
+## Auto format
+
+We use `ormolu`, it is the first one we found and seems to work fine
+
+In user `setting.json`
+```Json
+"haskell.formattingProvider": "ormolu"
+```
 ## Multithreading 
 
 ### Doc 
 - [HaskellWiki](https://wiki.haskell.org/Haskell_for_multicores#Lock-free_synchronisation)
 - [Real World Haskell](https://book.realworldhaskell.org/read/concurrent-and-multicore-programming.html)
+    - LTS (Long-Term Support): Produced weekly and considered the stable release
+    - Nightly: The bleeding-edge release produced nightly
 
 ### Mutex
 ```Haskell
@@ -169,3 +205,4 @@ We can use the `!` syntax to force eager evaluation.
 - {-# LANGUAGE LambdaCase #-}: allow lambda of the form \case { pattern1 -> expression1; pattern2 -> expression2; ... }
 - {-# LANGUAGE BangPatterns #-}:  force eager evaluation
 - {-# LANGUAGE RecordWildCards #-}: we can use {..} to pattern match and constructing records
+- {-# LANGUAGE NoImplicitPrelude #-}: to not import stuff from Prelude which is old and usafe
