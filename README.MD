@@ -155,6 +155,10 @@ We use `ormolu`, it is the first one we found and seems to work fine
 
 In user `setting.json`
 ```Json
+"[haskell]": {
+    "editor.defaultFormatter": "haskell.haskell",
+    "editor.formatOnSave": true
+},
 "haskell.formattingProvider": "ormolu"
 ```
 ## Multithreading 
