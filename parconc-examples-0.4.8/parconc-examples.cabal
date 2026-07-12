@@ -129,7 +129,7 @@ common distributed
 executable rpar
   import: deps
   main-is: rpar.hs
-  ghc-options: -threaded
+  ghc-options: -O2 -threaded
 
 executable sudoku1
   import: deps
