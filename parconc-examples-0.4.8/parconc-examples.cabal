@@ -134,13 +134,14 @@ executable rpar
 executable sudoku1
   import: deps
   main-is: sudoku1.hs
+  ghc-options: -O2 -rtsopts 
   other-modules: Sudoku
 
 executable sudoku2
   import: deps
   main-is: sudoku2.hs
   other-modules: Sudoku
-  ghc-options: -threaded
+  ghc-options: -O2 -rtsopts -threaded
 
 executable sudoku3
   import: deps

@@ -40,7 +40,14 @@ cabal build rpar.hs
  cabal run rpar -- 3 +RTS -N2
 ```
 
-## WHNF
+### Flags
+```zsh
++RTS -N2 # to use 2 cores
++RTS -s # for GHC runtime syustem to emit the statistics, propably neetd to compile with -rstopts
++RTS -l # to generate the eventlog file to open with threadscope
+```
+
+## Lazy evaluation
 
 ```haskell
 let x = 1 + 2 :: Int
@@ -54,5 +61,8 @@ Evaluate as far as the first constructor
 ```haskell
 seq x () # to get the WHNF of x
 ```
-## Eval Monad
+### Normal form
 
+We need to use `force :: NFData a => a -> a` to evaluates the entire structure of its argument.
+
+It is in `Control.DeepSeq`.
