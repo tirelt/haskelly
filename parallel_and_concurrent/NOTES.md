@@ -37,7 +37,7 @@ better to use directly cabal
 
 ```zsh
 cabal build rpar.hs
- cabal run rpar -- 3 +RTS -N2
+ cabal run rpar -- 3 +RTS -N2 -l
 ```
 
 ### Flags
@@ -46,6 +46,7 @@ cabal build rpar.hs
 +RTS -s # for GHC runtime syustem to emit the statistics, propably neetd to compile with -rstopts
 +RTS -l # to generate the eventlog file to open with threadscope
 ```
+Then open the `.eventlog` with threadscope.
 
 ## Lazy evaluation
 
@@ -66,3 +67,15 @@ seq x () # to get the WHNF of x
 We need to use `force :: NFData a => a -> a` to evaluates the entire structure of its argument.
 
 It is in `Control.DeepSeq`.
+
+Normal Form data:  norma form is a value with no unevaluated subexpressions.
+
+
+class NFData ahs only one method `rnf` for reduce to normal form
+
+We can use `deepseq` to deep evaluate an expression and turn it into a NF.
+
+```haskell
+force :: NFData a => a -> a
+force x = x `deepseq` x
+```

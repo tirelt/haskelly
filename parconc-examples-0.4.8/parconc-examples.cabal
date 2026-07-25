@@ -201,7 +201,7 @@ executable kmeans
   hs-source-dirs: kmeans
   main-is: kmeans.hs
   other-modules: KMeansCore
-  ghc-options: -threaded
+  ghc-options: -O2 -rtsopts -eventlog -threaded
 
 executable GenSamples
   import: deps
@@ -209,6 +209,7 @@ executable GenSamples
   main-is: GenSamples.hs
   other-modules: KMeansCore
   build-depends: normaldistribution >= 1.1 && < 1.2
+  ghc-options: -O2
 
 -- -----------------------------------------------------------------------------
 -- par-monad
