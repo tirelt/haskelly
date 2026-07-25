@@ -10,5 +10,5 @@ cradle:
       component: "exe:par"
     - path: "Stream.hs"
       component: "exe:stream"
-    - path: "scratch.hs"
+    - path: "Scratch.hs"
       component: "exe:scratch"

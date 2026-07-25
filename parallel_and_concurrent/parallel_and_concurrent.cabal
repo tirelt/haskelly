@@ -38,7 +38,7 @@ executable stream
   ghc-options:      -threaded
 
 executable scratch
-  main-is:          scratch.hs
+  main-is:          Scratch.hs
   build-depends:    base >=4.14 && <5
   default-language: Haskell2010
   ghc-options:      -threaded
