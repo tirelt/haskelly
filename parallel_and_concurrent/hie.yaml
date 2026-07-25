@@ -1,0 +1,4 @@
+cradle:
+  cabal:
+    - path: "Strategy.hs"
+      component: "exe:strategy"
