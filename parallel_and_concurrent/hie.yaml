@@ -2,3 +2,5 @@ cradle:
   cabal:
     - path: "Strategy.hs"
       component: "exe:strategy"
+    - path: "Eval.hs"
+      component: "exe:eval"
