@@ -11,7 +11,7 @@ parPair (a,b) = do
 	 return (a',b')
 
 using :: a -> Strategy a -> a
-x `uasing` s = runEval (s x)
+x `using` s = runEval (s x)
 
 -- More generic 
 
@@ -23,3 +23,11 @@ evalPair sa sb (a,b) = do
 
 parPair :: Strategy (a,b)
 parPair = evalPair rpar rpar
+
+rdeepseq :: NFData a => Strategy a
+rdeepseq x = rseq (force x)
+
+rparWith :: Strategy a -> Strategy a -- rpaWith s = wrap the Stregy s in an rpar
+rparWith s = s >== \x -> rpar x
+
+

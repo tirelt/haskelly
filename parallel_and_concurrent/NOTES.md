@@ -52,15 +52,15 @@ Then open the `.eventlog` with threadscope.
 
 ```haskell
 let x = 1 + 2 :: Int
-:sprint x # to print the value without evaluating
+:sprint x -- to print the value without evaluating
 ```
 Unevaluated computation = `thunk`
 
 ### Weak head normal form 
 
-Evaluate as far as the first constructor
+Evaluate as far as the first constructor and returns the second argument.
 ```haskell
-seq x () # to get the WHNF of x
+seq x () -- to get the WHNF of x
 ```
 ### Normal form
 
