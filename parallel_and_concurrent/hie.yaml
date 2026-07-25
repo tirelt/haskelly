@@ -4,3 +4,5 @@ cradle:
       component: "exe:strategy"
     - path: "Eval.hs"
       component: "exe:eval"
+    - path: "NFData.hs"
+      component: "exe:nfdata"
