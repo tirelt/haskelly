@@ -27,7 +27,7 @@ Test with `--allow-newer` to find the version we can use and update .cabal file.
 
 ## GHC 
 
-We need the flag `-threaded` to allow multithreading. The we can use `+RTS -N2` to tell the program to sue multiple cores.
+We need the flag `-threaded` to allow multithreading. Then we can use `+RTS -N2` to tell the program to sue multiple cores.
 
 ```zsh
 ghc -O2 test.hs -threaded
@@ -41,9 +41,19 @@ cabal build rpar.hs
 ```
 
 ### Flags
+
+#### Compile 
+
+```zsh
+-rstopts  # to allow Runtime System Options which allow the pogram to accept arguments (enclosed between +RTS and -RTS)
+-with-rtsopts="-N" # to specfity RTS options directly
+-fflvm # to enable GHC LLVM backend
+-O2 # O2 optim
+```
+#### Run
 ```zsh
 +RTS -N2 # to use 2 cores
-+RTS -s # for GHC runtime syustem to emit the statistics, propably neetd to compile with -rstopts
++RTS -s # for GHC runtime syustem to emit the statistics.
 +RTS -l # to generate the eventlog file to open with threadscope
 ```
 Then open the `.eventlog` with threadscope.

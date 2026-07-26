@@ -12,3 +12,5 @@ cradle:
       component: "exe:stream"
     - path: "Scratch.hs"
       component: "exe:scratch"
+    - path: "Repa.hs"
+      component: "exe:repa"
