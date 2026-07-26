@@ -14,3 +14,5 @@ cradle:
       component: "exe:scratch"
     - path: "Repa.hs"
       component: "exe:repa"
+    - path: "Accelerate.hs"
+      component: "exe:accelerate"

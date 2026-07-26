@@ -98,4 +98,33 @@ force x = x `deepseq` x
 - `Par` monad is 9implemented entirely in a Haskell lib so can be hacked. It doesn't support speculative paraallelism. Parellelism in the `Par` monad is always executed.
 - `Eval` monad have more diagnostics in ThreadScope.
 
+## Accelerate
 
+### Type classes
+#### Elt
+
+The class of types that may be array elements. Includes all the usual numeric types,
+as well as indices and tuples. In types of the form Exp e, the e is often required to
+be an instance of Elt. Note in particular that arrays are not an instance of Elt; this
+is the mechanism by which Accelerate enforces that arrays cannot be nested.
+
+#### Arrays
+This type class includes arrays and tuples of arrays. In Acc a, the a must always be
+an instance of the type class Arrays.
+
+#### Shape
+The class of shapes and indices. This class includes only Z and :. and is used to
+ensure that values used as shapes and indices are constructed from these two types.
+
+### Running on GPU
+
+flag to see what the GPU is doing
+```zsh
+cabal install accelerate-cuda -fdebug
+```
+Then we need 
+```haskell
+import Data.Array.Accelerate.CUDA -- instead of import Data.Array.Accelerate.Interpreter
+```
+`-dverbose`: prints some information about the type and capbilities of the GPU
+`-ddump-cc`L prints information about CUDA Kernel
