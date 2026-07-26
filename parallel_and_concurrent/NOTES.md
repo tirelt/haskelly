@@ -79,3 +79,13 @@ We can use `deepseq` to deep evaluate an expression and turn it into a NF.
 force :: NFData a => a -> a
 force x = x `deepseq` x
 ```
+
+## What to use
+
+- If we deal we Lazy data structure then wrinting a `Strategy` to evaluate it in parallel will pronbablr work well
+- `runPar` is epensive whereas `runEval` is free. Do not nest `runPar`.
+- `Eval` tends to perfom better at finer granularities due to the direct runtime system support for sparks. At larger granularities `Par` and `Eval` perform approximately the same.
+- `Par` monad is 9implemented entirely in a Haskell lib so can be hacked. It doesn't support speculative paraallelism. Parellelism in the `Par` monad is always executed.
+- `Eval` monad have more diagnostics in ThreadScope.
+
+
