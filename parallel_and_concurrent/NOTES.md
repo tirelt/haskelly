@@ -134,3 +134,11 @@ import Data.Array.Accelerate.CUDA -- instead of import Data.Array.Accelerate.Int
 The progrAm terminates when main returns, even if there are other threads still runnin. Ths other threas stop running and cease to exist after main returns.
 
 We use `MVar` to communicate between threads.
+
+## Exceptions
+
+Can only be caught in the IO monad.
+
+`SomeException` to catch everything.The exception types form a hierarchuy and at the top there is `SomeException`.
+
+Can be handle with `catch` or `try`.
