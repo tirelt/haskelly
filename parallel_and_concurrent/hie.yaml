@@ -18,3 +18,5 @@ cradle:
       component: "exe:accelerate"
     - path: "ThreadsAndMvars.hs"
       component: "exe:thread"
+    - path: "Async.hs"
+      component: "exe:async"
