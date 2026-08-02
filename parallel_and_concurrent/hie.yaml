@@ -16,3 +16,5 @@ cradle:
       component: "exe:repa"
     - path: "Accelerate.hs"
       component: "exe:accelerate"
+    - path: "ThreadsAndMvars.hs"
+      component: "exe:thread"

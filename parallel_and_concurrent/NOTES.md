@@ -92,7 +92,7 @@ force x = x `deepseq` x
 
 ## What to use
 
-- If we deal we Lazy data structure then wrinting a `Strategy` to evaluate it in parallel will pronbablr work well
+- If we deal we Lazy data structure then wrinting a `Strategy` to evaluate it in parallel will pronbably work well
 - `runPar` is epensive whereas `runEval` is free. Do not nest `runPar`.
 - `Eval` tends to perfom better at finer granularities due to the direct runtime system support for sparks. At larger granularities `Par` and `Eval` perform approximately the same.
 - `Par` monad is 9implemented entirely in a Haskell lib so can be hacked. It doesn't support speculative paraallelism. Parellelism in the `Par` monad is always executed.
@@ -128,3 +128,9 @@ import Data.Array.Accelerate.CUDA -- instead of import Data.Array.Accelerate.Int
 ```
 `-dverbose`: prints some information about the type and capbilities of the GPU
 `-ddump-cc`L prints information about CUDA Kernel
+
+## Concurrency
+
+The progrAm terminates when main returns, even if there are other threads still runnin. Ths other threas stop running and cease to exist after main returns.
+
+We use `MVar` to communicate between threads.
