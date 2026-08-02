@@ -50,3 +50,38 @@ waitAny as = do
   let forkwait a = forkIO $ do r <- try (wait' a); putMVar m r
   mapM_ forkwait as
   wait' (Async' m)
+
+-- Asynchonous Exceptions: throw by the user (e.g. he disconnects)
+
+{-
+throwTo :: Exception e => ThreadId -> e -> IO () -- to throw from one thread to another
+-}
+
+data Async'' a = Async'' ThreadId (MVar (Either SomeException a))
+
+cancel :: Async'' a -> IO ()
+cancel (Async'' t var) = throwTo t ThreadKilled
+
+async'' :: IO a -> IO (Async'' a)
+async'' action = do
+  m <- newEmptyMVar
+  t <- forkIO (do r <- try action; putMVar m r)
+  return (Async'' t m)
+
+-- Safer
+async''' :: IO a -> IO (Async'' a)
+async''' action = do
+  m <- newEmptyMVar
+  t <- mask $ \restore -> forkIO (do r <- try (restore action); putMVar m r)
+  return (Async'' t m)
+
+forkFinally' :: IO a -> (Either SomeException a -> IO ()) -> IO ThreadId
+forkFinally' action fun =
+  mask $ \restore ->
+  forkIO (do r <- try (restore action); fun r)
+
+async'''' :: IO a -> IO (Async'' a)
+async'''' action = do
+  m <- newEmptyMVar
+  t <- forkFinally' action (putMVar m)
+  return (Async'' t m)

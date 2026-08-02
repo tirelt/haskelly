@@ -135,6 +135,25 @@ The progrAm terminates when main returns, even if there are other threads still 
 
 We use `MVar` to communicate between threads.
 
+We use `mask` so inside asynchronous exception s are no longer asynchronous but they can still riased by certain operations. the `restore` function inside the mask restores the masking state outside the mask. 
+
+Interruptible operations (like takeMVar) may receive asynchronous exceptions even inside `mask`.
+
+All operations that may block indefinitly are designated as interruptible.
+
+An intereruptible operation may receive an asynchronous exception only if it actually blocks.
+
+We can use `uninterruptibleMask` to prevent interruptible operations to be interrupted but this is very dangerous.
+
+We can use `getMaskingState` to debug and  determine the state of a thread (`Unmasked`, `MaskedInterruptible`, `MaskedUninterruptible`)
+
+`bracket` is actually deined with `mask` to make it sage in the presence of asynchronous exceptions.
+
+We can use `modifyMVar_` instead of `takeMVar` / `putMVar` to make our code safe in  the presence of asynchronous axceptions.
+
+Asynchronous exceptions are masked inside excepption handlers by defualt.
+
+`forkIO` inherits the masking state of the parent thread.
 ## Exceptions
 
 Can only be caught in the IO monad.
@@ -142,3 +161,5 @@ Can only be caught in the IO monad.
 `SomeException` to catch everything.The exception types form a hierarchuy and at the top there is `SomeException`.
 
 Can be handle with `catch` or `try`.
+
+

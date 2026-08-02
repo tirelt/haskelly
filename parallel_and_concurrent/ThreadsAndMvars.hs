@@ -45,6 +45,9 @@ stream <- takeMVar readVar --
 Item val tail <- takeMVar stream --
 putMVar readVar tail --
 return val
+
+modifyMVar :: MVar a -> (a -> IO (a, b)) -> IO b
+modifyMVar_ :: MVar a -> (a -> IO a) -> IO ()
 -}
 
 main :: IO ()
