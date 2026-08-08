@@ -83,3 +83,10 @@ executable stm
 						, containers
   default-language: Haskell2010
   ghc-options:      -threaded
+
+executable server1 
+  main-is:          server/SimpleMultiThreaded.hs
+  build-depends:    base >=4.14 && <5
+                  , network
+  default-language: Haskell2010
+  ghc-options:      -threaded

@@ -24,3 +24,5 @@ cradle:
       component: "exe:exceptions"
     - path: "STM.hs"
       component: "exe:stm"
+    - path: "server/SimpleMultiThreaded.hs"
+      component: "exe:server1"

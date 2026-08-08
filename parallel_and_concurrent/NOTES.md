@@ -101,6 +101,7 @@ force x = x `deepseq` x
 ## Accelerate
 
 ### Type classes
+
 #### Elt
 
 The class of types that may be array elements. Includes all the usual numeric types,
@@ -169,3 +170,13 @@ Can be handle with `catch` or `try`.
 The STM implementation relies on being able to roll back the effects of a transaction in the event of a conflict with another transaction.
 A transaction can be rolled back only if we can track exactly what effects it has (which is not the case for an arbitrary IO action).
 For this reason, the STM monad permits only side effects on TVars.
+
+## Server
+
+### Simple multithreaded Server
+
+```zsh
+cabal build server1
+cabal run server1
+nc localhost 44444 # to connect
+```
