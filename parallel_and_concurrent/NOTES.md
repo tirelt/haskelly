@@ -162,4 +162,10 @@ Can only be caught in the IO monad.
 
 Can be handle with `catch` or `try`.
 
+## Software Transactional Memory
 
+`TVar`: transactional variable -> mutable variable that can be read or written only within the speicial STM monad using `readTVar` and `writeTVar`.
+
+The STM implementation relies on being able to roll back the effects of a transaction in the event of a conflict with another transaction.
+A transaction can be rolled back only if we can track exactly what effects it has (which is not the case for an arbitrary IO action).
+For this reason, the STM monad permits only side effects on TVars.

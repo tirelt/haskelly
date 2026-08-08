@@ -22,3 +22,5 @@ cradle:
       component: "exe:async"
     - path: "Exceptions.hs"
       component: "exe:exceptions"
+    - path: "STM.hs"
+      component: "exe:stm"
