@@ -90,3 +90,12 @@ executable server1
                   , network
   default-language: Haskell2010
   ghc-options:      -threaded
+
+executable server2
+  main-is:          server/STMServer.hs
+  build-depends:    base >=4.14 && <5
+                  , network
+						, stm
+						, async
+  default-language: Haskell2010
+  ghc-options:      -threaded
