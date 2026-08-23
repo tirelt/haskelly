@@ -92,10 +92,10 @@ force x = x `deepseq` x
 
 ## What to use
 
-- If we deal we Lazy data structure then wrinting a `Strategy` to evaluate it in parallel will pronbably work well
+- If we deal we Lazy data structure then wrinting a `Strategy` to evaluate it in parallel will probably work well
 - `runPar` is epensive whereas `runEval` is free. Do not nest `runPar`.
 - `Eval` tends to perfom better at finer granularities due to the direct runtime system support for sparks. At larger granularities `Par` and `Eval` perform approximately the same.
-- `Par` monad is 9implemented entirely in a Haskell lib so can be hacked. It doesn't support speculative paraallelism. Parellelism in the `Par` monad is always executed.
+- `Par` monad is implemented entirely in a Haskell lib so can be hacked. It doesn't support speculative parallelism. Parellelism in the `Par` monad is always executed.
 - `Eval` monad have more diagnostics in ThreadScope.
 
 ## Accelerate
@@ -132,11 +132,11 @@ import Data.Array.Accelerate.CUDA -- instead of import Data.Array.Accelerate.Int
 
 ## Concurrency
 
-The progrAm terminates when main returns, even if there are other threads still runnin. Ths other threas stop running and cease to exist after main returns.
+The program terminates when main returns, even if there are other threads still runnin. Ths other threas stop running and cease to exist after main returns.
 
 We use `MVar` to communicate between threads.
 
-We use `mask` so inside asynchronous exception s are no longer asynchronous but they can still riased by certain operations. the `restore` function inside the mask restores the masking state outside the mask. 
+We use `mask` so inside asynchronous exceptions are no longer asynchronous but they can still raised by certain operations. the `restore` function inside the mask restores the masking state outside the mask. 
 
 Interruptible operations (like takeMVar) may receive asynchronous exceptions even inside `mask`.
 
